@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
-  root "boards#index"
+  # root "boards#index"
+  unauthenticated do
+    root "boards#index"
+  end
+
+  authenticated :user do
+    root "posts#index"
+  end
   # get("/", { :controller => "boards", :action => "index" })
 
   # Routes for the Post resource:
